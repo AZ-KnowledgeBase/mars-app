@@ -1,0 +1,17 @@
+MVC Model:
+
+Models -> Model (DATA)
+What it is: Your data and business logic
+What it does: Stores data, defines structure, handles data operations
+Think of it as: The "brain" that knows the facts
+
+Services -> Controller (MiddleMan)
+What it is: The bridge between Model and View
+What it does: Handles user actions, updates Model, tells View to update
+Think of it as: The "coordinator" that connects everything
+
+Screens -> View (User)
+What it is: What the user sees and interacts with
+What it does: Displays data, captures user input
+Think of it as: The "face" that shows information
+
