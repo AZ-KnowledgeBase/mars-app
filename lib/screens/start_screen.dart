@@ -18,6 +18,7 @@ class StartScreen extends StatelessWidget {
         // Hamburger icon is automatic when drawer exists
       ),
       drawer: const AppDrawer(), // Reusable drawer
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
