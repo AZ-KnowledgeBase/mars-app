@@ -10,6 +10,14 @@ class AppTheme{
   static const Color marsWhite = Color.fromARGB(255, 255, 255, 255);
 
   // Custom Text styles
+
+  // Text style for selection cards
+  static const TextStyle cardLabelStyle = TextStyle(
+    color: marsWhite,
+    fontWeight: FontWeight.bold,
+    fontSize: 14.0,
+  );
+
     // Text for light theme 
   static const TextTheme lightTextTheme = TextTheme(
     bodySmall: TextStyle(fontSize: 14.0, color: Colors.white),
