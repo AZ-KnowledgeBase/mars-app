@@ -51,7 +51,6 @@ class StartScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.marsOrange,
-                foregroundColor: AppTheme.marsBlack,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40,
                   vertical: 25,
@@ -62,7 +61,7 @@ class StartScreen extends StatelessWidget {
               ),
               child: Text(
                 'Start Exploring',
-                style: Theme.of(context).textTheme.bodySmall,
+                style: AppTheme.darkTextTheme.bodyMedium,
               ),
             ),
           ],
