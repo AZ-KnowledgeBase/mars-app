@@ -7,6 +7,7 @@ class AppTheme{
   static const Color marsOrange = Color.fromARGB(255, 255, 128, 0);
   static const Color marsBlack = Color.fromARGB(255, 27, 27, 27);
   static const Color marsGrey = Color.fromARGB(255, 65, 65, 65);
+  static const Color marsLightGrey = Colors.white24;
   static const Color marsWhite = Color.fromARGB(255, 255, 255, 255);
 
   // Custom Text styles
