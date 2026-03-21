@@ -5,7 +5,6 @@ import '../screens/home_page.dart';
 import '../screens/media_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/settings_screen.dart';
-import '../screens/forecast_screen.dart';
 
 class AppDrawerController {
   // All screen imports moved here from the View
@@ -30,9 +29,6 @@ class AppDrawerController {
 
   void goToMap(BuildContext context) =>
       navigateTo(context, const MapScreen());
-
-  void goToForecast(BuildContext context) =>
-      navigateTo(context, const ForecastScreen());
 
   void goToSettings(BuildContext context) =>
       navigateTo(context, const SettingsScreen());

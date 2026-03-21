@@ -57,11 +57,6 @@ class AppDrawer extends StatelessWidget {
             onTap: () => controller.goToMap(context),
           ),
           ListTile(
-            leading: const Icon(Icons.cloud, color: Colors.white),
-            title: const Text('Forecast', style: TextStyle(color: Colors.white)),
-            onTap: () => controller.goToForecast(context),
-          ),
-          ListTile(
             leading: const Icon(Icons.settings, color: Colors.white),
             title: const Text('Settings', style: TextStyle(color: Colors.white)),
             onTap: () => controller.goToSettings(context),

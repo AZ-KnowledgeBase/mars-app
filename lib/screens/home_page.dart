@@ -42,28 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () => _controller.onCardTapped(context, 0, () => setState(() {})), 
             ),
 
-           // Adds space between the Top card and Bottom Cards
+           // Adds space between the Top card and Bottom Card
            const SizedBox(height: 16),
-
-            // ── Bottom row: Mars Forecast + Mars Map ──
-            Row(
-              children: [
-                Expanded(
-                  child: SelectionCard(
-                    label: _controller.cards[1].label,
-                    isSelected: _controller.cards[1].isSelected,
-                    onTap: () => _controller.onCardTapped(context, 1, () => setState(() {})),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: SelectionCard(
-                    label: _controller.cards[2].label,
-                    isSelected: _controller.cards[2].isSelected,
-                    onTap: () => _controller.onCardTapped(context, 2, () => setState(() {})),
-                  ),
-                ),
-              ],
+           
+           // ── Top full-width card: Mars Map ──
+           SelectionCard(
+              label: _controller.cards[1].label,
+              isSelected: _controller.cards[1].isSelected,
+              onTap: () => _controller.onCardTapped(context, 1, () => setState(() {})),
             ),
 
             // Pushes the settings button to the bottom of the screen

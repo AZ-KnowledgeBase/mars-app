@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import '../models/card_item.dart';
 import '../screens/media_screen.dart';
-import '../screens/forecast_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/settings_screen.dart';
 
@@ -10,7 +9,6 @@ class HomeController {
   // Card definitions — all screen knowledge lives here, not in the View
   final List<CardItem> cards = [
     CardItem(label: 'Mars Gallery',  destination: const MediaScreen()),
-    CardItem(label: 'Mars Forecast', destination: const ForecastScreen()),
     CardItem(label: 'Mars Map',      destination: const MapScreen()),
   ];
 
