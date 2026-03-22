@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239148701346",
+    "project_id": "marsexplorerapp-524d2",
+    "storage_bucket": "marsexplorerapp-524d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239148701346:android:187ae5c6511d321033e9fb",
+        "android_client_info": {
+          "package_name": "com.example.mars_explorer_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFLXxUNOZTdsvHliKAsvybn7yKP80tpOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -35,12 +35,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
 
-          // ✅ View only handles UI — taps delegate to controller
-          ListTile(
-            leading: const Icon(Icons.rocket_launch, color: Colors.white),
-            title: const Text('Start', style: TextStyle(color: Colors.white)),
-            onTap: () => controller.goToStart(context),
-          ),
+          // View only handles UI — taps delegate to controller
           ListTile(
             leading: const Icon(Icons.home, color: Colors.white),
             title: const Text('Home', style: TextStyle(color: Colors.white)),

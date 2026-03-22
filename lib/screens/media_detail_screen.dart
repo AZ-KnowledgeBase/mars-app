@@ -32,7 +32,7 @@ class MediaDetailScreen extends StatelessWidget {
                           item.thumbnailUrl,
                           width: double.infinity,
                           fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) => Container(
+                          errorBuilder: (_, _, _) => Container(
                             height: 200,
                             color: AppTheme.marsGrey,
                           ),
