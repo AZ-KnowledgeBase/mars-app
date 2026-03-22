@@ -33,6 +33,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.4.4        # For mocking HTTP calls
+  build_runner: ^2.4.9   # Required by mockito
   
   # Linting rules for code quality
   flutter_lints: ^6.0.0
@@ -57,7 +59,7 @@ flutter:
     - assets/images/mars-gallery-icon2.png
     - assets/images/universe-background.jpg
   #   - assets/images/         # Include all images in this folder
-  
+
   # Uncomment to add custom fonts
   # fonts:
   #   - family: Roboto

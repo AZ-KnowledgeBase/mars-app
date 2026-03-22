@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/card_item.dart';
 import '../screens/media_screen.dart';
 import '../screens/map_screen.dart';
-import '../screens/settings_screen.dart';
+import '../screens/info_screen.dart';
 
 class HomeController {
   // Card definitions — all screen knowledge lives here, not in the View
@@ -30,7 +30,7 @@ class HomeController {
   void goToSettings(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const SettingsScreen()),
+      MaterialPageRoute(builder: (context) => const InfoScreen()),
     );
   }
 }

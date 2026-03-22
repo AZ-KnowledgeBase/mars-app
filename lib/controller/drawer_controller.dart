@@ -4,7 +4,7 @@ import '../screens/start_screen.dart';
 import '../screens/home_page.dart';
 import '../screens/media_screen.dart';
 import '../screens/map_screen.dart';
-import '../screens/settings_screen.dart';
+import '../screens/info_screen.dart';
 import '../screens/saved_media_screen.dart';
 import '../controller/auth_controller.dart';
 
@@ -30,7 +30,7 @@ class AppDrawerController {
       navigateTo(context, const MapScreen());
 
   void goToSettings(BuildContext context) =>
-      navigateTo(context, const SettingsScreen());
+      navigateTo(context, const InfoScreen());
 
   void goToSaved(BuildContext context) =>
       navigateTo(context, const SavedMediaScreen());

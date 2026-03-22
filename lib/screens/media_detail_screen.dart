@@ -92,74 +92,88 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
                 ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: Stack(
+        children: [
 
-            // ── Media display — video player or image depending on type ──
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: widget.item.mediaType == 'video'
-                  ? _buildVideoPlayer()  // Video type gets the player
-                  : _buildImage(),       // Image type gets static display
+          // ── Background image fills the entire screen ──
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/universe-background.jpg',
+              fit: BoxFit.cover,
             ),
+          ),
 
-            const SizedBox(height: 16),
+          // ── Screen content sits on top of the background ──
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-            // Media title
-            Text(
-              widget.item.title,
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: 20,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            // Creation date trimmed to YYYY-MM-DD
-            Text(
-              widget.item.dateCreated.length >= 10
-                  ? widget.item.dateCreated.substring(0, 10)
-                  : widget.item.dateCreated,
-              style: const TextStyle(color: Colors.white54, fontSize: 12),
-            ),
-
-            const SizedBox(height: 12),
-
-            // Full width save/unsave button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                onPressed: _isSaveLoading ? null : _handleSaveToggle,
-                icon: Icon(
-                  _isSaved ? Icons.bookmark : Icons.bookmark_border,
+                // ── Media display — video player or image depending on type ──
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: widget.item.mediaType == 'video'
+                      ? _buildVideoPlayer()
+                      : _buildImage(),
                 ),
-                label: Text(_isSaved ? 'Saved' : 'Save to Device'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      _isSaved ? AppTheme.marsGrey : AppTheme.marsOrange,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+
+                const SizedBox(height: 16),
+
+                // Media title
+                Text(
+                  widget.item.title,
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                    fontSize: 20,
                   ),
                 ),
-              ),
-            ),
 
-            const SizedBox(height: 16),
-            const Divider(color: Colors.white24),
-            const SizedBox(height: 8),
+                const SizedBox(height: 8),
 
-            // Full description
-            Text(
-              widget.item.description,
-              style: Theme.of(context).textTheme.bodySmall,
+                // Creation date trimmed to YYYY-MM-DD
+                Text(
+                  widget.item.dateCreated.length >= 10
+                      ? widget.item.dateCreated.substring(0, 10)
+                      : widget.item.dateCreated,
+                  style: const TextStyle(color: Colors.white54, fontSize: 12),
+                ),
+
+                const SizedBox(height: 12),
+
+                // Full width save/unsave button
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    onPressed: _isSaveLoading ? null : _handleSaveToggle,
+                    icon: Icon(
+                      _isSaved ? Icons.bookmark : Icons.bookmark_border,
+                    ),
+                    label: Text(_isSaved ? 'Saved' : 'Save to Device'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          _isSaved ? AppTheme.marsGrey : AppTheme.marsOrange,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+                const Divider(color: Colors.white24),
+                const SizedBox(height: 8),
+
+                // Full description
+                Text(
+                  widget.item.description,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -40,75 +40,89 @@ class _SavedMediaScreenState extends State<SavedMediaScreen> {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       drawer: const AppDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('Saved', style: Theme.of(context).textTheme.bodyLarge),
-            const SizedBox(height: 8),
-            const Divider(color: Colors.white24),
-            const SizedBox(height: 12),
+      body: Stack(
+        children: [
 
-            Expanded(
-              child: _isLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: AppTheme.marsOrange,
-                      ),
-                    )
-                  : _savedItems.isEmpty
+          // ── Background image fills the entire screen ──
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/universe-background.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // ── Screen content sits on top of the background ──
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text('Saved', style: Theme.of(context).textTheme.bodyLarge),
+                const SizedBox(height: 8),
+                const Divider(color: Colors.white24),
+                const SizedBox(height: 12),
+
+                Expanded(
+                  child: _isLoading
                       ? const Center(
-                          child: Text(
-                            'No saved items yet.\nTap the bookmark icon on any media to save it.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white54),
+                          child: CircularProgressIndicator(
+                            color: AppTheme.marsOrange,
                           ),
                         )
-                      // 2 column grid reusing the MediaCard widget
-                      : GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
-                            childAspectRatio: 0.85,
-                          ),
-                          itemCount: _savedItems.length,
-                          itemBuilder: (context, index) {
-                            final saved = _savedItems[index];
+                      : _savedItems.isEmpty
+                          ? const Center(
+                              child: Text(
+                                'No saved items yet.\nTap the bookmark icon on any media to save it.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white54),
+                              ),
+                            )
+                          // 2 column grid reusing the MediaCard widget
+                          : GridView.builder(
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 0.85,
+                              ),
+                              itemCount: _savedItems.length,
+                              itemBuilder: (context, index) {
+                                final saved = _savedItems[index];
 
-                            // Convert SavedMediaItem to MediaItem to reuse MediaCard
-                            final mediaItem = MediaItem(
-                              nasaId: saved.nasaId,
-                              title: saved.title,
-                              description: saved.description,
-                              thumbnailUrl: saved.thumbnailUrl,
-                              mediaType: saved.mediaType,
-                              dateCreated: saved.dateCreated,
-                            );
+                                // Convert SavedMediaItem to MediaItem to reuse MediaCard
+                                final mediaItem = MediaItem(
+                                  nasaId: saved.nasaId,
+                                  title: saved.title,
+                                  description: saved.description,
+                                  thumbnailUrl: saved.thumbnailUrl,
+                                  mediaType: saved.mediaType,
+                                  dateCreated: saved.dateCreated,
+                                );
 
-                            return MediaCard(
-                              item: mediaItem,
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      MediaDetailScreen(item: mediaItem),
-                                ),
-                              ).then((_) {
-                                // Refresh the list when returning from detail screen
-                                // in case the user unsaved the item
-                                _storage.loadSavedItems().then((items) {
-                                  setState(() => _savedItems = items);
-                                });
-                              }),
-                            );
-                          },
-                        ),
+                                return MediaCard(
+                                  item: mediaItem,
+                                  onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          MediaDetailScreen(item: mediaItem),
+                                    ),
+                                  ).then((_) {
+                                    // Refresh the list when returning from detail screen
+                                    // in case the user unsaved the item
+                                    _storage.loadSavedItems().then((items) {
+                                      setState(() => _savedItems = items);
+                                    });
+                                  }),
+                                );
+                              },
+                            ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

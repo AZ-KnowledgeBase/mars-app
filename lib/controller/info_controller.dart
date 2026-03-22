@@ -1,12 +1,12 @@
 // controller/settings_controller.dart
 // Inspect and change accordingly 
-import '../models/setting_item.dart';
+import '../models/info_item.dart';
 
-class SettingsController {
+class InfoController {
   // All settings items with their content
   late List<SettingItem> settingItems;
 
-  SettingsController() {
+  InfoController() {
     _initializeSettings();
   }
 
@@ -16,11 +16,11 @@ class SettingsController {
         title: 'About this App',
         content: '''Mars App v1.0.0
 
-Mars App is your gateway to exploring the Red Planet. Access real-time weather data, stunning satellite imagery, and interactive maps of Mars.
+Mars App is your gateway to exploring the Red Planet. Access stunning satellite imagery, and interactive maps of Mars.
 
 Technical Details:
 • Built with Flutter & Dart
-• API Integration: Mars Weather Service, NASA Image Library
+• API Integration: Vesta/Moon/Mars Trek WMTS, NASA Image Library
 • Platform: iOS & Android
 • Minimum OS: iOS 11.0, Android 5.0
 • Storage: ~150MB
