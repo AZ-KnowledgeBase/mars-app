@@ -13,10 +13,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  video_player: ^2.8.3 # To play Videos
   http: ^1.2.0 # This is for API calls
   flutter_map: ^6.1.0      # 2D tile map
   latlong2: ^0.9.1        # Required by flutter_map for coordinates
   webview_flutter: ^4.4.0   # 3D globe via Three.js
+  path_provider: ^2.1.5  # Access device directories for file storage (temp files, app documents, cache)
 
   # iOS-style icons
   cupertino_icons: ^1.0.8

@@ -1,12 +1,14 @@
 // main.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'screens/start_screen.dart';
+import 'screens/home_page.dart';
 import 'utility/theme.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Required before Firebase initializes
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -21,7 +23,10 @@ class MarsApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mars App',
       theme: AppTheme.marsDarkTheme,
-      home: const StartScreen(),
+      // Checks Firebase auth state to decide the starting screen
+      home: FirebaseAuth.instance.currentUser != null
+          ? const HomeScreen()  // User already logged in — go straight to home
+          : const StartScreen(), // No session found — show login screen
     );
   }
 }

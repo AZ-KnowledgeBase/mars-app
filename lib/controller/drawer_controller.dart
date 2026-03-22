@@ -5,16 +5,15 @@ import '../screens/home_page.dart';
 import '../screens/media_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/saved_media_screen.dart';
 import '../controller/auth_controller.dart';
 
 class AppDrawerController {
-   final AuthController _authController = AuthController();
+  final AuthController _authController = AuthController();
 
-  // All screen imports moved here from the View
-  // Navigation logic extracted from app_drawer.dart into dedicated methods
-
+  // Closes the drawer and navigates to the given screen
   void navigateTo(BuildContext context, Widget screen) {
-    Navigator.pop(context); // Close drawer
+    Navigator.pop(context);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => screen),
@@ -32,10 +31,14 @@ class AppDrawerController {
 
   void goToSettings(BuildContext context) =>
       navigateTo(context, const SettingsScreen());
-  
+
+  void goToSaved(BuildContext context) =>
+      navigateTo(context, const SavedMediaScreen());
+
+  // Signs the user out via AuthController then navigates to the start screen
   Future<void> logout(BuildContext context) async {
-  await _authController.signOut();
-    if (context.mounted) {                         
+    await _authController.signOut();
+    if (context.mounted) {
       navigateTo(context, const StartScreen());
     }
   }
