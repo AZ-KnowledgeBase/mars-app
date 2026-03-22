@@ -8,8 +8,8 @@ import '../screens/settings_screen.dart';
 class HomeController {
   // Card definitions — all screen knowledge lives here, not in the View
   final List<CardItem> cards = [
-    CardItem(label: 'Mars Gallery',  destination: const MediaScreen()),
-    CardItem(label: 'Mars Map',      destination: const MapScreen()),
+    CardItem(label: 'Mars Gallery', destination: const MediaScreen(),  imagePath: 'assets/images/mars-gallery-icon2.png',),
+    CardItem(label: 'Mars Map', destination: const MapScreen(),  imagePath: 'assets/images/mars-gallery-icon1.png',),
   ];
 
   // Handles card selection: deselects all others, selects tapped card, navigates

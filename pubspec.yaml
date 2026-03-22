@@ -53,6 +53,9 @@ flutter:
   # Uncomment to add image/file assets to your app
   assets:
     - assets/icons/icon.png        # Your app icon source
+    - assets/images/mars-gallery-icon1.png
+    - assets/images/mars-gallery-icon2.png
+    - assets/images/universe-background.jpg
   #   - assets/images/         # Include all images in this folder
   
   # Uncomment to add custom fonts

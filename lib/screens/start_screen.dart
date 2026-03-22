@@ -46,10 +46,15 @@ class _StartScreenState extends State<StartScreen> {
               decoration: BoxDecoration(
                 color: AppTheme.marsGrey,
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: AppTheme.marsLightGrey,
                   width: 3,
                 ),
                 borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(
+                Icons.person,
+                size: 60,
+                color: AppTheme.marsLightGrey,
               ),
             ),
 
