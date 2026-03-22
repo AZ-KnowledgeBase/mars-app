@@ -24,8 +24,7 @@ class SelectionCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 100000), // Smooth transition when isSelected changes
-        height: 180,
+        duration: const Duration(milliseconds: 200), // Smooth transition when isSelected changes
         decoration: BoxDecoration(
           color: isSelected ? AppTheme.marsRed : AppTheme.marsGrey, // Selected state drives color
           borderRadius: BorderRadius.circular(12),

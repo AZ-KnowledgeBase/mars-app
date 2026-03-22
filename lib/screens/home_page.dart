@@ -33,23 +33,26 @@ class _HomeScreenState extends State<HomeScreen> {
            const SizedBox(height: 55),
             // ── Top full-width card: Mars Gallery ──
             // Passes card data from the Model and delegates tap logic to the Controller
-           SelectionCard(
-              // Card label pulled from Model
-              label: _controller.cards[0].label,           
-              // Selection state from Model
-              isSelected: _controller.cards[0].isSelected, 
-              // Controller handles tap, setState triggers UI refresh
-              onTap: () => _controller.onCardTapped(context, 0, () => setState(() {})), 
+           Expanded(                          
+            flex: 2,                         
+            child: SelectionCard(
+              label: _controller.cards[0].label,
+              isSelected: _controller.cards[0].isSelected,
+              onTap: () => _controller.onCardTapped(context, 0, () => setState(() {})),
+              ),
             ),
 
            // Adds space between the Top card and Bottom Card
            const SizedBox(height: 16),
            
            // ── Top full-width card: Mars Map ──
-           SelectionCard(
+           Expanded(                          
+              flex: 2,                         
+              child: SelectionCard(
               label: _controller.cards[1].label,
               isSelected: _controller.cards[1].isSelected,
               onTap: () => _controller.onCardTapped(context, 1, () => setState(() {})),
+             ),
             ),
 
             // Pushes the settings button to the bottom of the screen

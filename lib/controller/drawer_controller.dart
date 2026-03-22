@@ -5,8 +5,11 @@ import '../screens/home_page.dart';
 import '../screens/media_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/settings_screen.dart';
+import '../controller/auth_controller.dart';
 
 class AppDrawerController {
+   final AuthController _authController = AuthController();
+
   // All screen imports moved here from the View
   // Navigation logic extracted from app_drawer.dart into dedicated methods
 
@@ -17,9 +20,6 @@ class AppDrawerController {
       MaterialPageRoute(builder: (context) => screen),
     );
   }
-
-  void goToStart(BuildContext context) =>
-      navigateTo(context, const StartScreen());
 
   void goToHome(BuildContext context) =>
       navigateTo(context, const HomeScreen());
@@ -32,4 +32,11 @@ class AppDrawerController {
 
   void goToSettings(BuildContext context) =>
       navigateTo(context, const SettingsScreen());
+  
+  Future<void> logout(BuildContext context) async {
+  await _authController.signOut();
+    if (context.mounted) {                         
+      navigateTo(context, const StartScreen());
+    }
+  }
 }

@@ -41,7 +41,7 @@ class MediaCard extends StatelessWidget {
                         ? Image.network(
                             item.thumbnailUrl,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, _, _) => Container(
+                            errorBuilder: (context, error, stackTrace) => Container(
                               color: AppTheme.marsGrey,
                             ),
                           )

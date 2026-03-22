@@ -56,6 +56,12 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Settings', style: TextStyle(color: Colors.white)),
             onTap: () => controller.goToSettings(context),
           ),
+
+          ListTile(
+            leading: const Icon(Icons.logout, color: AppTheme.marsOrange),
+            title: const Text('Logout', style: TextStyle(color: AppTheme.marsOrange)),
+            onTap: () => controller.logout(context),
+          ),
         ],
       ),
     );
