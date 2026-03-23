@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../utility/theme.dart';
 
+// Reusable expandable tile used on the Info Screen — tapping toggles the content section open or closed
 class ExpandableSettingTile extends StatelessWidget {
   final String title;           // Section title
   final String content;         // Section content

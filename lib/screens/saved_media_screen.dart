@@ -8,6 +8,7 @@ import '../models/saved_media_item.dart';
 import '../models/media_item.dart';
 import 'media_detail_screen.dart';
 
+// Displays all media items the user has saved locally on their device
 class SavedMediaScreen extends StatefulWidget {
   const SavedMediaScreen({super.key});
 

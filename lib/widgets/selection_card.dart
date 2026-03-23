@@ -2,16 +2,13 @@
 import 'package:flutter/material.dart';
 import '../utility/theme.dart';
 
-// View helper — paints a single card based on values received
-// Intentionally has no Model knowledge, keeping it generic and reusable
+// Reusable card widget for the Home Screen — renders a background image, gradient overlay, and label bar generic and reusable
 class SelectionCard extends StatelessWidget {  
-  // Received from CardItem via home_page
-  final String label;
-  final bool isSelected;
-  // Delegated to home_controller
-  final VoidCallback onTap;
-  final String imagePath; // Asset path for the card's background image
-
+  final String label;       // Display name received from CardItem via home_page
+  final bool isSelected;    // Selection state received from CardItem via home_page
+  final VoidCallback onTap; // Tap action delegated to home_controller
+  final String imagePath;   // Asset path for the card's background image
+  
   const SelectionCard({
     super.key,
     // Must be provided — card cannot render without these                                  

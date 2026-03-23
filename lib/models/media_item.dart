@@ -1,5 +1,6 @@
 // models/media_item.dart
 
+// Model representing a single media item returned from the NASA Image and Video Library API
 class MediaItem {
   final String nasaId;
   final String title;

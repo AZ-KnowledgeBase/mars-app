@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import '../utility/theme.dart';
 
-// Reusable square icon button used for map controls: zoom in, zoom out, compass
-// Separated from map_screen.dart because it is used 3 times and
-// could be reused on other screens in future
+// Reusable square icon button for map controls — used for zoom in, zoom out, and compass reset
 class MapControlButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
@@ -25,9 +23,9 @@ class MapControlButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppTheme.marsBlack.withValues(alpha: 0.85),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.white24),
+          border: Border.all(color: AppTheme.marsLightGrey),
         ),
-        child: Icon(icon, color: Colors.white, size: 22),
+        child: Icon(icon, color: AppTheme.marsWhite, size: 22),
       ),
     );
   }

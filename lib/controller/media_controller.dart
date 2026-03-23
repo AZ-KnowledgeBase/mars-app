@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import '../models/media_item.dart';
 import '../screens/media_detail_screen.dart';
 
+// Handles all NASA Image and Video Library API calls and gallery navigation logic
 class MediaController {
   static const String _baseUrl = 'https://images-api.nasa.gov/search';
 
@@ -39,6 +40,8 @@ class MediaController {
   }
 
   // Core API call
+  /// Fetches media items from NASA API based on query.
+/// Returns a list of [MediaItem] or throws on failure.
   Future<List<MediaItem>> _fetchMedia(String query, {int pageSize = 20}) async {
     final uri = Uri.parse(
       '$_baseUrl?q=$query&media_type=image,video&page_size=$pageSize',

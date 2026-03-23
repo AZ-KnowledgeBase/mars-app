@@ -5,6 +5,7 @@ import '../models/media_item.dart';
 import '../utility/theme.dart';
 import '../controller/media_detail_controller.dart';
 
+// Detail screen for a single media item — displays image or video, title, date, description, and save button
 class MediaDetailScreen extends StatefulWidget {
   final MediaItem item;
   const MediaDetailScreen({super.key, required this.item});
@@ -15,8 +16,8 @@ class MediaDetailScreen extends StatefulWidget {
 
 class _MediaDetailScreenState extends State<MediaDetailScreen> {
   final MediaDetailController _controller = MediaDetailController();
-  bool _isSaved = false;
-  bool _isSaveLoading = true;
+  bool _isSaved = false;      // Whether this item is saved to the device
+  bool _isSaveLoading = true; // Drives the bookmark loading state
 
   // Video player state
   VideoPlayerController? _videoController;

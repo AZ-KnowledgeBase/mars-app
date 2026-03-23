@@ -2,9 +2,7 @@
 import 'package:flutter/material.dart';
 import '../utility/theme.dart';
 
-// Self-contained 3D view toggle switch anchored to the bottom of the map screen
-// Separated from map_screen.dart because it is a distinct UI component
-// with its own layout and styling
+// Toggle switch anchored to the bottom of the map screen for switching between 2D and 3D view
 class Map3DToggle extends StatelessWidget {
   final bool is3D;             // Current toggle state read from MapState via map_screen
   final VoidCallback onToggle; // Delegates toggle action back up to map_screen
@@ -34,7 +32,7 @@ class Map3DToggle extends StatelessWidget {
           Switch(
             value: is3D,
             activeThumbColor: AppTheme.marsOrange, // Matches app theme on active state
-            onChanged: (_) => onToggle(),     // Delegates to map_screen, no logic here
+            onChanged: (_) => onToggle(),            // Delegates to map_screen, no logic here
           ),
         ],
       ),

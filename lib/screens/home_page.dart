@@ -5,6 +5,7 @@ import '../widgets/selection_card.dart';
 import '../utility/theme.dart';
 import '../controller/home_controller.dart';
 
+// Main discovery screen — presents feature cards and access to the Info screen
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
 
-          // ── Background image fills the entire screen ──
+          // Background image fills the entire screen
           Positioned.fill(
             child: Image.asset(
               'assets/images/universe-background.jpg',
@@ -36,13 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          // ── All screen content sits on top of the background ──
+          // All screen content sits on top of the background 
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
 
-                // ── Top full-width card: Mars Gallery ──
+                // Top full-width card: Mars Gallery 
                 Expanded(
                   flex: 2,
                   child: SelectionCard(
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Space between the two cards
                 const SizedBox(height: 16),
 
-                // ── Bottom full-width card: Mars Map ──
+                // Bottom full-width card: Mars Map 
                 Expanded(
                   flex: 2,
                   child: SelectionCard(
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Small gap between divider and button
                 const SizedBox(height: 8),
 
-                // ── Settings button — independent of card logic ──
+                // Settings button — independent of card logic 
                 Row(
                   children: [
                     // Settings icon slot

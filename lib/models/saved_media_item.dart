@@ -1,4 +1,6 @@
 // models/saved_media_item.dart
+
+// Model representing a media item saved locally to the device
 class SavedMediaItem {
   final String nasaId;
   final String title;

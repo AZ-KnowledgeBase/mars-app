@@ -5,6 +5,7 @@ import '../models/media_item.dart';
 import '../models/saved_media_item.dart';
 import '../controller/local_media_storage.dart';
 
+// Handles save/remove/check logic and video URL fetching for the Media Detail Screen
 class MediaDetailController {
   final LocalMediaStorage _storage = LocalMediaStorage();
 

@@ -1,10 +1,11 @@
-// screens/settings_screen.dart
+// screens/info_screen.dart
 import 'package:flutter/material.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/expandable_setting_tile.dart';
 import '../controller/info_controller.dart';
 import '../utility/theme.dart';
 
+// Utility screen displaying app info, terms & conditions, and support via expandable tiles
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
 
@@ -28,7 +29,7 @@ class _InfoScreenState extends State<InfoScreen> {
       body: Stack(
         children: [
 
-          // ── Background image fills the entire screen ──
+          // Background image fills the entire screen
           Positioned.fill(
             child: Image.asset(
               'assets/images/universe-background.jpg',
@@ -57,6 +58,7 @@ class _InfoScreenState extends State<InfoScreen> {
 
                 // ── Expandable Settings List ──
                 Expanded(
+                  // StatefulBuilder allows each tile to rebuild independently on tap
                   child: StatefulBuilder(
                     builder: (context, setState) {
                       return ListView.builder(

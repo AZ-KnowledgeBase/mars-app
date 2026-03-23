@@ -10,6 +10,7 @@ import '../utility/theme.dart';
 import '../controller/mars_map_controller.dart';
 import '../models/map_state.dart';
 
+// Interactive Mars map screen — supports 2D tile view and 3D globe view
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 

@@ -5,6 +5,7 @@ import '../widgets/media_card.dart';
 import '../utility/theme.dart';
 import '../controller/media_controller.dart';
 
+// Search and gallery screen for NASA images and videos
 class MediaScreen extends StatefulWidget {
   const MediaScreen({super.key});
 
@@ -15,7 +16,7 @@ class MediaScreen extends StatefulWidget {
 class _MediaScreenState extends State<MediaScreen> {
   final MediaController _controller = MediaController();
   final TextEditingController _searchController = TextEditingController();
-  bool _isLoading = true;
+  bool _isLoading = true; // Drives the loading spinner while the default gallery fetches
 
   @override
   void initState() {

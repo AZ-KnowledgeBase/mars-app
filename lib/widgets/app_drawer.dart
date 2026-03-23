@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../utility/theme.dart';
 import '../controller/drawer_controller.dart';
 
+// Reusable navigation drawer present on all main screens
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
 
@@ -16,6 +17,7 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
+          // Drawer header with app branding
           DrawerHeader(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
@@ -62,8 +64,10 @@ class AppDrawer extends StatelessWidget {
             onTap: () => controller.goToSettings(context),
           ),
 
+          // Visually separates logout from the main navigation items
           const Divider(color: Colors.white24), // Separator before logout
 
+          // Signs the user out and returns them to the Start Screen
           ListTile(
             leading: const Icon(Icons.logout, color: AppTheme.marsOrange),
             title: const Text('Logout', style: TextStyle(color: AppTheme.marsOrange)),

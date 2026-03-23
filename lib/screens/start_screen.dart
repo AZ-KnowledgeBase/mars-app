@@ -4,6 +4,7 @@ import '../controller/auth_controller.dart';
 import '../utility/theme.dart';
 import 'home_page.dart';
 
+// Login and registration screen — entry point for unauthenticated users
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
 
@@ -20,9 +21,9 @@ class _StartScreenState extends State<StartScreen> {
   final TextEditingController _usernameController = TextEditingController();
 
   // Tracks which form is showing — login or register
-  bool _isLogin   = true;
-  bool _isLoading = false;
-  String? _errorMessage;
+  bool _isLogin   = true;    // Toggles between login and register form
+  bool _isLoading = false;   // Drives the loading spinner on the submit button
+  String? _errorMessage;     // Displays Firebase auth error messages to the user
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _StartScreenState extends State<StartScreen> {
           ),
 
           // ── Screen content sits on top of the background ──
-          // ConstrainedBox ensures content fills full screen height
+          // ConstrainedBox ensures content fills full screen height, preventing a black gap at the bottom
           ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: MediaQuery.of(context).size.height,
@@ -56,7 +57,7 @@ class _StartScreenState extends State<StartScreen> {
                 children: [
                   const SizedBox(height: 40),
 
-                  // Mars logo placeholder
+                  // App logo placeholder
                   Container(
                     width: 120,
                     height: 120,
@@ -77,7 +78,7 @@ class _StartScreenState extends State<StartScreen> {
 
                   const SizedBox(height: 40),
 
-                  // ── Username field — only shown on Register ──
+                  // Username field — only shown on Register
                   if (!_isLogin) ...[
                     _buildTextField(
                       controller: _usernameController,
@@ -87,7 +88,7 @@ class _StartScreenState extends State<StartScreen> {
                     const SizedBox(height: 16),
                   ],
 
-                  // ── Email field ──
+                  // Email field
                   _buildTextField(
                     controller: _emailController,
                     hint: 'Email',
@@ -97,7 +98,7 @@ class _StartScreenState extends State<StartScreen> {
 
                   const SizedBox(height: 16),
 
-                  // ── Password field ──
+                  // Password field
                   _buildTextField(
                     controller: _passwordController,
                     hint: 'Password',
@@ -107,7 +108,7 @@ class _StartScreenState extends State<StartScreen> {
 
                   const SizedBox(height: 12),
 
-                  // ── Error message — only visible when auth fails ──
+                  // Error message — only visible when auth fails
                   if (_errorMessage != null)
                     Text(
                       _errorMessage!,
@@ -116,7 +117,7 @@ class _StartScreenState extends State<StartScreen> {
 
                   const SizedBox(height: 24),
 
-                  // ── Login / Register button ──
+                  // Login / Register button 
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -140,7 +141,7 @@ class _StartScreenState extends State<StartScreen> {
 
                   const SizedBox(height: 16),
 
-                  // ── Toggle between Login and Register ──
+                  // Toggle between Login and Register
                   TextButton(
                     onPressed: () {
                       setState(() {
@@ -164,7 +165,7 @@ class _StartScreenState extends State<StartScreen> {
     );
   }
 
-  // Handles login or register depending on current mode
+  // Delegates login or register to AuthController depending on current mode
   Future<void> _handleSubmit() async {
     setState(() {
       _isLoading    = true;
