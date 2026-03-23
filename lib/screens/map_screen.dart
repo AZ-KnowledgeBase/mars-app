@@ -72,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
 
     // Load the zoom-0 WMTS overview tile as the globe texture
     new THREE.TextureLoader().load(
-      'https://raw.githubusercontent.com/Krimit/mars/master/mars.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg',
       (tex) => {
         material.map = tex;
         material.color.set(0xffffff);

@@ -27,119 +27,139 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.marsBlack,
       appBar: AppBar(
         title: Text(_isLogin ? 'Welcome to Mars App' : 'Create Account'),
         centerTitle: true,
+        automaticallyImplyLeading: false, // Removes back arrow — this is the first screen
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            const SizedBox(height: 40),
+      body: Stack(
+        children: [
 
-            // Mars logo placeholder
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                color: AppTheme.marsGrey,
-                border: Border.all(
-                  color: AppTheme.marsLightGrey,
-                  width: 3,
-                ),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                Icons.person,
-                size: 60,
-                color: AppTheme.marsLightGrey,
-              ),
+          // ── Background image fills the entire screen ──
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/universe-background.jpg',
+              fit: BoxFit.cover,
             ),
+          ),
 
-            const SizedBox(height: 40),
-
-            // ── Username field — only shown on Register ──
-            if (!_isLogin) ...[
-              _buildTextField(
-                controller: _usernameController,
-                hint: 'Username',
-                icon: Icons.person,
-              ),
-              const SizedBox(height: 16),
-            ],
-
-            // ── Email field ──
-            _buildTextField(
-              controller: _emailController,
-              hint: 'Email',
-              icon: Icons.email,
-              keyboardType: TextInputType.emailAddress,
+          // ── Screen content sits on top of the background ──
+          // ConstrainedBox ensures content fills full screen height
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height,
             ),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 40),
 
-            const SizedBox(height: 16),
-
-            // ── Password field ──
-            _buildTextField(
-              controller: _passwordController,
-              hint: 'Password',
-              icon: Icons.lock,
-              obscureText: true,
-            ),
-
-            const SizedBox(height: 12),
-
-            // ── Error message — only visible when auth fails ──
-            if (_errorMessage != null)
-              Text(
-                _errorMessage!,
-                style: const TextStyle(color: Colors.redAccent, fontSize: 13),
-              ),
-
-            const SizedBox(height: 24),
-
-            // ── Login / Register button ──
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _isLoading ? null : _handleSubmit,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppTheme.marsOrange,
-                  foregroundColor: AppTheme.marsBlack,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: AppTheme.marsBlack)
-                    : Text(
-                        _isLogin ? 'Login' : 'Create Account',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                  // Mars logo placeholder
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: AppTheme.marsGrey,
+                      border: Border.all(
+                        color: AppTheme.marsLightGrey,
+                        width: 3,
                       ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 60,
+                      color: AppTheme.marsLightGrey,
+                    ),
+                  ),
+
+                  const SizedBox(height: 40),
+
+                  // ── Username field — only shown on Register ──
+                  if (!_isLogin) ...[
+                    _buildTextField(
+                      controller: _usernameController,
+                      hint: 'Username',
+                      icon: Icons.person,
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+
+                  // ── Email field ──
+                  _buildTextField(
+                    controller: _emailController,
+                    hint: 'Email',
+                    icon: Icons.email,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // ── Password field ──
+                  _buildTextField(
+                    controller: _passwordController,
+                    hint: 'Password',
+                    icon: Icons.lock,
+                    obscureText: true,
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  // ── Error message — only visible when auth fails ──
+                  if (_errorMessage != null)
+                    Text(
+                      _errorMessage!,
+                      style: const TextStyle(color: Colors.redAccent, fontSize: 13),
+                    ),
+
+                  const SizedBox(height: 24),
+
+                  // ── Login / Register button ──
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : _handleSubmit,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppTheme.marsOrange,
+                        foregroundColor: AppTheme.marsBlack,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(color: AppTheme.marsBlack)
+                          : Text(
+                              _isLogin ? 'Login' : 'Create Account',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // ── Toggle between Login and Register ──
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _isLogin = !_isLogin;
+                        _errorMessage = null; // Clear error when switching forms
+                      });
+                    },
+                    child: Text(
+                      _isLogin
+                          ? 'Don\'t have an account? Register'
+                          : 'Already have an account? Login',
+                      style: const TextStyle(color: AppTheme.marsOrange),
+                    ),
+                  ),
+                ],
               ),
             ),
-
-            const SizedBox(height: 16),
-
-            // ── Toggle between Login and Register ──
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  _isLogin = !_isLogin;
-                  _errorMessage = null; // Clear error when switching forms
-                });
-              },
-              child: Text(
-                _isLogin
-                    ? 'Don\'t have an account? Register'
-                    : 'Already have an account? Login',
-                style: const TextStyle(color: AppTheme.marsOrange),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
