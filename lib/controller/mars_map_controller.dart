@@ -5,6 +5,7 @@ import 'package:latlong2/latlong.dart' show LatLng;
 import 'package:webview_flutter/webview_flutter.dart';
 import '../models/map_state.dart';
 
+
 class MarsMapController {
   final MapState state = MapState();
 
