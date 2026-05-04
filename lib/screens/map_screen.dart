@@ -140,10 +140,10 @@ class _MapScreenState extends State<MapScreen> {
       drawer: const AppDrawer(),
       body: Stack(
         children: [
-          // ── Main map content — switches between 2D tiles and 3D globe ──
+          // Main map content — switches between 2D tiles and 3D globe 
           _controller.state.is3D ? _build3DGlobe() : _build2DMap(),
 
-          // ── Loading overlay when switching to 3D ──
+          // Loading overlay when switching to 3D 
           // Reuses same CircularProgressIndicator pattern as media_screen
           if (_is3DLoading)
             Container(
@@ -153,7 +153,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
 
-          // ── Left side control buttons using separated MapControlButton widget ──
+          // Left side control buttons using separated MapControlButton widget
           Positioned(
             left: 16,
             top: 24,
@@ -178,7 +178,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
 
-          // ── 3D toggle anchored to bottom center using separated Map3DToggle widget ──
+          // 3D toggle anchored to bottom center using separated Map3DToggle widget 
           Positioned(
             bottom: 24,
             left: 0,
@@ -218,7 +218,7 @@ class _MapScreenState extends State<MapScreen> {
       ),
       children: [
         TileLayer(
-          urlTemplate: _marsWmtsUrl,
+          urlTemplate:_marsWmtsUrl ,
           userAgentPackageName: 'com.example.mars_explorer_app',
         ),
       ],
